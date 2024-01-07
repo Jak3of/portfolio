@@ -1,0 +1,46 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-slate-700" >
+		<slot />
+	</body>
+</html>
+
+<style is:global >
+	
+	/* importar fuentes */
+
+	
+	@font-face {
+		font-family: 'yanone';
+		src: url('/fonts/yanone.ttf') format('truetype');
+	}
+	@font-face {
+		font-family: 'titilium';
+		src: url('/fonts/titilium.ttf') format('truetype');
+	} 
+	@font-face {
+		font-family: 'finger';
+		src: url('/fonts/finger.ttf') format('truetype');
+	} 
+
+	
+	
+
+</style>
+
