@@ -1,0 +1,91 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section color="white">
+  <header
+    slot="header"
+    class="flex flex-col xl:pl-[20%] gap-6 w-[50%] text-start text-white px-16 pt-56"
+  >
+    <h2 class="text-white text-[45px] font-titilium">Nelson Correa</h2>
+    <p class="text-white text-[20px] font-medium">Full Stack Developer</p>
+  </header>
+
+  <article
+    slot="article"
+    class="flex flex-col gap-6 text-start w-[50%] text-white pt-72 pr-2 md:pr-20"
+  >
+    <p class="text-white text-[18px] font-medium">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta inventore
+      quasi magni voluptas fugit nobis dolorum hic nam incidunt et? Asperiores
+      ex quisquam mollitia hic ad eum, molestias repellendus beatae!
+    </p>
+  </article>
+
+  <div slot="footer" class="gap-x-6 flex mx-auto">
+    <a
+      class="border-[3px] border-gray-600 bg-gray-600 text-sm rounded font-medium text-white px-12 py-2 inline-block transition-colors hover:border-gray-500 hover:bg-gray-500"
+      href="#"
+    >
+      Astro</a
+    >
+    <a
+      class="bg-white text-sm rounded font-medium px-12 py-2 transition-colors hover:bg-black hover:text-white inline-flex justify-center items-center text-black"
+      href="#"
+    >
+      Tailwind</a
+    >
+  </div>
+
+  <div
+    slot="background"
+    class="h-full w-full object-cover object-center bg-blue-950"
+    id="bg-image-models"
+  >
+    <div
+      class="bg-black bg-opacity-30 h-full w-full border-b-[100%] border-l-[100%]"
+    >
+      <canvas id="myCanvas" class=""></canvas>
+    </div>
+  </div>
+</Section>
+
+<script>
+  function isEdge() {
+    if (
+      navigator.userAgent.indexOf("Edge") > -1 ||
+      navigator.userAgent.indexOf("Edg") > -1
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  let canvas = document.getElementById("myCanvas") as HTMLCanvasElement;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  function canvasContext() {
+    let ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0); // desde la esquina superior izquierda (0,0)
+    ctx.lineTo(canvas.width / 2 + 50, 0); // hasta la derecha (full width,0)
+    ctx.lineTo(canvas.width / 3, canvas.height); // hasta abajo ( middle width, full height)
+    ctx.lineTo(0, canvas.height); // hasta la izquierda (0, full height)
+    ctx.closePath(); // Cierre
+
+    ctx.fillStyle = "black"; // Color del trapecio
+    ctx.globalAlpha = 0.3;
+    ctx.fill();
+  }
+
+  canvasContext();
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvasContext();
+  });
+</script>
