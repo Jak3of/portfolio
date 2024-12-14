@@ -1,0 +1,112 @@
+---
+import SectionHalf from "./SectionHalf.astro";
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/Jak3of",
+    icon: "fab fa-github"
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/nelson-correa98",
+    icon: "fab fa-linkedin"
+  },
+  {
+    name: "Email",
+    url: "mailto:nelsonc897@gmail.com",
+    icon: "fas fa-envelope"
+  },
+  {
+    name: "Phone",
+    url: "tel:+51927774504",
+    icon: "fas fa-phone"
+  }
+];
+---
+
+<SectionHalf >
+  <div
+    slot="header"
+    id="contact"
+    class="space-y-6"
+  >
+    <div>
+      <h2 class="text-4xl font-titilium text-white mb-3">Contacto</h2>
+      <p class="text-xl text-white/80">¿Interesado en trabajar juntos?</p>
+    </div>
+    
+    
+  </div>
+
+  <div
+    slot="article"
+    class="space-y-8"
+  >
+  <p class="text-lg text-white/70">
+    Abierto a oportunidades de trabajo freelance, colaboraciones o empleo a tiempo completo.
+  </p>
+    <div class="grid grid-cols-2 gap-4">
+      {socialLinks.map(({ name, url, icon }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 text-white/70 hover:text-white transition-colors group"
+        >
+          <i class={`${icon} text-2xl group-hover:scale-110 transition-transform`}></i>
+          <span class="text-lg font-medium">{name}</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="border-t border-white/10 pt-4">
+      <p class="text-sm text-white/50">
+        {new Date().getFullYear()} Nelson Correa. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+
+  <div
+    slot="background"
+    class="h-full w-full object-cover object-center bg-gradient-to-br from-blue-950 to-slate-900"
+  >
+    <div class="bg-black bg-opacity-30 h-full w-full">
+      <canvas id="footerCanvas" class="h-full w-full"></canvas>
+    </div>
+  </div>
+</SectionHalf>
+
+<script>
+  const canvas = document.getElementById("footerCanvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight / 2;
+    };
+
+    resizeCanvas();
+
+    const canvasContext = () => {
+      const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, 0);
+        ctx.lineTo(canvas.width, 0);
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.lineTo(canvas.width / 3, canvas.height);
+        ctx.closePath();
+        ctx.fillStyle = "black";
+        ctx.globalAlpha = 0.3;
+        ctx.fill();
+      }
+    };
+
+    canvasContext();
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      canvasContext();
+    });
+  }
+</script>

@@ -1,0 +1,155 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section id="skills" color="white">
+  <header
+    slot="header"
+    class="flex flex-col xl:pl-[20%] gap-6 w-[50%] text-start text-white px-16 pt-56"
+  >
+    <h2 class="text-white text-[45px] font-titilium">Habilidades</h2>
+    <p class="text-white text-[20px] font-medium">Tecnologías y Herramientas</p>
+  </header>
+
+  <article
+    slot="article"
+    class="flex flex-col gap-8 text-start w-[50%] text-white pt-52 pr-2 md:pr-20"
+  >
+    <!-- Frontend -->
+    <div class="skills-category">
+      <h3 class="text-white text-[24px] font-titilium">Frontend</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        <div class="skill-item">
+          <i class="fab fa-react text-blue-400 text-2xl"></i>
+          <span>React</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-js text-yellow-400 text-2xl"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-sass text-pink-500 text-2xl"></i>
+          <span>Sass</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-wind text-blue-300 text-2xl"></i>
+          <span>Tailwind</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend -->
+    <div class="skills-category mt-8">
+      <h3 class="text-white text-[24px] font-titilium">Backend</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        <div class="skill-item">
+          <i class="fab fa-node text-green-500 text-2xl"></i>
+          <span>Node.js</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-php text-purple-400 text-2xl"></i>
+          <span>PHP</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-database text-blue-400 text-2xl"></i>
+          <span>MySQL</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-server text-green-400 text-2xl"></i>
+          <span>MongoDB</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-laravel text-red-500 text-2xl"></i>
+          <span>Laravel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Herramientas -->
+    <div class="skills-category mt-8">
+      <h3 class="text-white text-[24px] font-titilium">Herramientas</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        <div class="skill-item">
+          <i class="fab fa-git-alt text-orange-500 text-2xl"></i>
+          <span>Git</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-docker text-blue-400 text-2xl"></i>
+          <span>Docker</span>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-terminal text-gray-400 text-2xl"></i>
+          <span>Terminal</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-aws text-orange-400 text-2xl"></i>
+          <span>AWS</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div
+    slot="background"
+    class="h-full w-full object-cover object-center bg-gradient-to-br from-blue-950 to-slate-900"
+  >
+    <div class="bg-black bg-opacity-30 h-full w-full border-b-[100%] border-l-[100%]">
+      <canvas id="skillsCanvas" class=""></canvas>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+  .skill-item {
+    @apply flex items-center gap-3 bg-black bg-opacity-30 p-3 rounded-lg transition-all duration-300;
+  }
+
+  .skill-item:hover {
+    @apply transform scale-105 bg-opacity-40;
+  }
+
+  .skill-item span {
+    @apply text-[16px] font-medium;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("skillsCanvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const canvasContext = () => {
+      const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(canvas.width / 2 , 0);
+        ctx.lineTo(canvas.width / 3, canvas.height);
+        ctx.lineTo(0, canvas.height);
+        ctx.closePath();
+        ctx.fillStyle = "black";
+        ctx.globalAlpha = 0.3;
+        ctx.fill();
+      }
+    };
+
+    canvasContext();
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvasContext();
+    });
+  }
+</script>

@@ -1,0 +1,15 @@
+---
+const { color } = Astro.props;
+---
+
+<section class="relative h-[50vh]">
+  <div class="absolute top-0 left-0 right-0 bottom-0">
+    <slot name="background" />
+  </div>
+  <div class="relative h-full z-30 container mx-auto px-4 md:px-8 lg:px-16 flex flex-col justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <slot name="header" />
+      <slot name="article" />
+    </div>
+  </div>
+</section>

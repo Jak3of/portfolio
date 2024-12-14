@@ -2,7 +2,7 @@
 
 
 const { id, showFooterContent } = Astro.props;
-import FooterMenu from './FooterMenu.astro';
+
 ---
 
 <section
@@ -20,11 +20,7 @@ import FooterMenu from './FooterMenu.astro';
 
     
 
-<footer class="flex flex-col flex-grow absolute z-30 w-full justify-end pb-20 h-[30%] ">
-      <slot name="footer" />
-      <!-- Contidionally load footer: -->
-      {showFooterContent && <FooterMenu />}
-    </footer>
+
   <div class="absolute top-0 bottom-0 h-full w-full z-10">
     <slot name="background" />
   </div>

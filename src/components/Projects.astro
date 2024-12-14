@@ -1,0 +1,103 @@
+---
+import Section from "./Section.astro";
+import Project from "./Project.astro";
+
+const projects = [
+  {
+    title: "Sistema de Gestión de Ventas para Restaurante",
+    description: "Desarrollé una aplicación web para gestionar pedidos, inventarios y pagos en tiempo real. Implementé una interfaz intuitiva y optimizada, mejorando la eficiencia operativa en un 40%. Integré pasarelas de pago seguras y actualizaciones dinámicas mediante WebSockets.",
+    image: "https://via.placeholder.com/150",
+    technologies: ["React.js", "Node.js", "MySQL", "WebSockets"],
+    github: "#",
+    demo: "#"
+  },
+  {
+    title: "Aplicación de Automatización de Tareas",
+    description: "Diseñé un sistema de automatización para realizar tareas repetitivas utilizando APIs externas. Implementé un registro detallado de eventos, optimizando la supervisión de procesos.",
+    image: "https://via.placeholder.com/150",
+    technologies: ["Python", "Flask", "PostgreSQL", "REST APIs"],
+    github: "#",
+    demo: "#"
+  },
+  {
+    title: "Generador de Ciudades en 3D",
+    description: "Construí una simulación interactiva para crear ciudades virtuales, con carreteras y estructuras en 3D. Enfocado en la representación precisa de diseños urbanos y la mejora de la experiencia de navegación.",
+    image: "https://via.placeholder.com/150",
+    technologies: ["Three.js", "JavaScript", "WebGL"],
+    github: "#",
+    demo: "#"
+  }
+];
+---
+
+<Section id="projects" color="white">
+  <header
+    slot="header"
+    class="flex flex-col xl:pl-[20%] gap-6 w-[50%] text-start text-white px-16 pt-56"
+  >
+    <h2 class="text-white text-[45px] font-titilium">Proyectos</h2>
+    <p class="text-white text-[20px] font-medium">Trabajos Destacados</p>
+  </header>
+
+  <article
+    slot="article"
+    class="flex flex-col gap-8 text-start w-[50%] h-full text-white pt-72 pr-2 md:pr-20"
+  >
+    <div class="grid grid-cols-1 gap-8 overflow-y-auto scroll-smooth overflow-x-hidden snap-y snap-mandatory hide-scrollbar">
+      {projects.map((project) => (
+        <Project {...project} />
+      ))}
+    </div>
+  </article>
+
+  <div
+    slot="background"
+    class="h-full w-full object-cover object-center bg-gradient-to-br from-blue-950 to-slate-900"
+  >
+    <div class="bg-black bg-opacity-30 h-full w-full border-b-[100%] border-l-[100%]">
+      <canvas id="projectsCanvas" class=""></canvas>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("projectsCanvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const canvasContext = () => {
+      const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 3, 0); 
+        ctx.lineTo(canvas.width, 0);     
+        ctx.lineTo(canvas.width, canvas.height); 
+        ctx.lineTo(canvas.width / 2 , canvas.height); 
+        ctx.closePath();
+        ctx.fillStyle = "black";
+        ctx.globalAlpha = 0.3; 
+        ctx.fill();
+      }
+    };
+
+    canvasContext();
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvasContext();
+    });
+  }
+</script>

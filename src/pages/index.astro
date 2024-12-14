@@ -1,18 +1,33 @@
 ---
-import FooterMenu from '../components/FooterMenu.astro';
 import LandingHeader from '../components/LandingHeader.astro';
 import Layout from '../layouts/Layout.astro';
 import AboutMe from '../components/AboutMe.astro';
+import Education from '../components/Education.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Footer from '../components/Footer.astro';
 
 ---
 
 <Layout title="Nelson Correa Portfolio">
 	<LandingHeader />
-	<main class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth">
+	<main class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth ">
 
 		<div class="snap-center">
 			<AboutMe />
 		  </div>
+		<div class="snap-center">
+			<Education />
+		</div>
+		<div class="snap-center">
+			<Skills />
+		</div>
+		<div class="snap-center">
+			<Projects />
+		</div>
+		<div class="snap-center">
+			<Footer />
+		</div>
 		
 	</main>
 

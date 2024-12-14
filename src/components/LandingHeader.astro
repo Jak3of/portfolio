@@ -9,21 +9,21 @@
     <div class="flex flex-grow basis-0">
         <a href="./" class="text-6xl font-bold font-titilium"> NS</a>
     </div>
-    <nav class="xl:block ">
+    <nav class="xl:block">
         <ul
             class="flex text-lg [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-titilium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li]:cursor-pointer [&>li>a]:hover:text-white"
         >
-            <li><a href="#model-s">About me</a></li>
-            <li><a href="#">Lenguages</a></li>
-            <li><a href="#">Proyects</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#about">About me</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    
     <div
-    id="menu-backdrop"
-    class={`
+        id="menu-backdrop"
+        class={`
       absolute bg-slate-300/5 backdrop-blur-lg rounded
       translate-x-[var(--left)] translate-y-[var(--top)]
       left-0 top-0
@@ -31,57 +31,69 @@
       transition-all duration-500
       ease-in-out opacity-0 -z-10
     `}
-  >
-  </div>
-    
+    >
+    </div>
 </header>
 
 <script>
     const listItem = document.querySelectorAll("#landing-header li")
     const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement
-  
+
     listItem.forEach((item) => {
-      item.addEventListener("mouseenter", () => {
-        const { left, top, width, height } = item.getBoundingClientRect()
-  
-        menuBackDrop.style.setProperty("--left", `${left}px`)
-        menuBackDrop.style.setProperty("--top", `${top}px`)
-        menuBackDrop.style.setProperty("--width", `${width}px`)
-        menuBackDrop.style.setProperty("--height", `${height}px`)
-  
-        menuBackDrop.style.opacity = "1"
-        menuBackDrop.style.visibility = "visible"
-      })
-  
-      item.addEventListener("mouseleave", () => {
-        menuBackDrop.style.opacity = "0"
-        menuBackDrop.style.visibility = "hidden"
-      })
+        item.addEventListener("mouseenter", () => {
+            const { left, top, width, height } = item.getBoundingClientRect()
+
+            menuBackDrop.style.setProperty("--left", `${left}px`)
+            menuBackDrop.style.setProperty("--top", `${top}px`)
+            menuBackDrop.style.setProperty("--width", `${width}px`)
+            menuBackDrop.style.setProperty("--height", `${height}px`)
+
+            menuBackDrop.style.opacity = "1"
+            menuBackDrop.style.visibility = "visible"
+        })
+
+        item.addEventListener("mouseleave", () => {
+            menuBackDrop.style.opacity = "0"
+            menuBackDrop.style.visibility = "hidden"
+        })
     })
-  </script>
+
+    // Manejo de navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = anchor.getAttribute('href');
+            if (!targetId) return;
+
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
 
 <script>
-    
     const headerEl = document.querySelector("#landing-header") as HTMLElement
-  
+
     const observerOptions = {
-      root: null,
+        root: null,
       rootMargin: "0px", // en cuanto se vea el elemento
       threshold: 0.9, // porcentaje de visibilidad
     }
-  
+
     const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const { isIntersecting } = entry
-    if (isIntersecting) {
-      const color = entry.target.getAttribute("data-header-color")
-      if (color !== null) {
-        headerEl.style.color = color
-      }
-    }
-  })
-}, observerOptions)
-  
+        entries.forEach((entry) => {
+            const { isIntersecting } = entry
+            if (isIntersecting) {
+                const color = entry.target.getAttribute("data-header-color")
+                if (color !== null) {
+                    headerEl.style.color = color
+                }
+            }
+        })
+    }, observerOptions)
+
     const sectionElements = document.querySelectorAll(".landing-section")
     sectionElements.forEach((section) => observer.observe(section))
-  </script>
+</script>

@@ -1,0 +1,103 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section id="education" color="white">
+  <header
+    slot="header"
+    class="flex flex-col xl:pl-[20%] gap-6 w-[50%] text-start text-white px-16 pt-56"
+  >
+    <h2 class="text-white text-[45px] font-titilium">Educación</h2>
+    <p class="text-white text-[20px] font-medium">Formación y Certificaciones</p>
+  </header>
+
+  <article
+    slot="article"
+    class="flex flex-col gap-8 text-start w-[50%] text-white pt-72 pr-2 md:pr-20"
+  >
+    <!-- IDAT -->
+    <div class="education-item">
+      <h3 class="text-white text-[24px] font-titilium">Instituto IDAT</h3>
+      <p class="text-white text-[18px] font-medium">Desarrollo de Sistemas e Informática</p>
+      <p class="text-gray-300 text-[16px]">Egresado - 2020</p>
+    </div>
+
+    <!-- UTP -->
+    <div class="education-item mt-8">
+      <h3 class="text-white text-[24px] font-titilium">Universidad Tecnológica del Perú</h3>
+      <p class="text-white text-[18px] font-medium">Ingeniería de Sistemas</p>
+      <p class="text-gray-300 text-[16px]">En curso - 2022 - Presente</p>
+    </div>
+
+    <!-- Certificaciones -->
+    <div class="education-item mt-8">
+      <h3 class="text-white text-[24px] font-titilium">Certificaciones</h3>
+      <ul class="flex flex-col gap-3 mt-2">
+        <li class="text-white text-[18px] font-medium flex items-center">
+          <i class="fas fa-certificate text-blue-400 mr-3"></i>
+          JavaScript Avanzado - Udemy
+        </li>
+        <li class="text-white text-[18px] font-medium flex items-center">
+          <i class="fas fa-certificate text-blue-400 mr-3"></i>
+          PHP Intermedio - Udemy
+        </li>
+        <li class="text-white text-[18px] font-medium flex items-center">
+          <i class="fas fa-certificate text-blue-400 mr-3"></i>
+          CSS Moderno - Udemy
+        </li>
+      </ul>
+    </div>
+  </article>
+
+  <div
+    slot="background"
+    class="h-full w-full object-cover object-center bg-gradient-to-br from-blue-950 to-slate-900"
+  >
+    <div class="bg-black bg-opacity-30 h-full w-full border-b-[100%] border-l-[100%]">
+      <canvas id="educationCanvas" class=""></canvas>
+    </div>
+  </div>
+</Section>
+
+<style>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+  .education-item {
+    transition: transform 0.3s ease;
+  }
+
+  .education-item:hover {
+    transform: translateX(10px);
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("educationCanvas") as HTMLCanvasElement;
+
+  if (canvas) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const canvasContext = () => {
+      const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+      if (ctx) {
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 3, 0); 
+        ctx.lineTo(canvas.width, 0);     
+        ctx.lineTo(canvas.width, canvas.height); 
+        ctx.lineTo(canvas.width / 2 , canvas.height); 
+        ctx.closePath();
+        ctx.fillStyle = "black";
+        ctx.globalAlpha = 0.3; 
+        ctx.fill();
+      }
+    };
+
+    canvasContext();
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvasContext();
+    });
+  }
+</script>
