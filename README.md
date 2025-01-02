@@ -1,54 +1,68 @@
-# portfolio -- Astro Starter Kit: Basics
+# 💼 Nelson Correa - Portfolio Personal
 
-```sh
-npm create astro@latest -- --template basics
+[![Estado del Proyecto](https://img.shields.io/badge/Estado-Activo-success)](https://github.com/tu-usuario/portfolio)
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-blue.svg)](LICENSE)
+
+## 🚀 Descripción
+
+Portafolio profesional desarrollado con tecnologías modernas que muestra mi trayectoria como Full Stack Developer. Este sitio web presenta mi experiencia, proyectos y habilidades técnicas de una manera interactiva y elegante.
+
+## ✨ Características Principales
+
+- 📱 Diseño responsivo y moderno
+- 🎨 Interfaz interactiva con animaciones suaves
+- 📚 Secciones detalladas de proyectos y habilidades
+- 🌐 Optimizado para SEO
+- 🔍 Código limpio y bien estructurado
+
+## 🛠️ Tecnologías Utilizadas
+
+- [Astro](https://astro.build/) - Framework principal
+- [React](https://reactjs.org/) - Componentes interactivos
+- [TypeScript](https://www.typescriptlang.org/) - Tipado estático
+- [TailwindCSS](https://tailwindcss.com/) - Estilos
+- [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) - Animaciones
+
+## 🚀 Instalación y Uso
+
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/tu-usuario/portfolio.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+2. Instalar dependencias:
+```bash
+npm install
+```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+3. Iniciar servidor de desarrollo:
+```bash
+npm run dev
+```
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+4. Construir para producción:
+```bash
+npm run build
+```
 
-## 🚀 Project Structure
+## 📁 Estructura del Proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
-├── public/
-│   └── favicon.svg
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/    # Componentes reutilizables
+│   ├── layouts/      # Plantillas de página
+│   └── pages/        # Páginas del sitio
+├── public/           # Archivos estáticos
+└── ...
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📫 Contacto
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Email: nelsonc897@gmail.com
+- LinkedIn: [Tu perfil de LinkedIn]
+- Ubicación: Lima, Perú
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📄 Licencia
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
